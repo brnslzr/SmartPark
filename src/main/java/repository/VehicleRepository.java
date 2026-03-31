@@ -1,6 +1,5 @@
-package Repository;
+package repository;
 
-import model.ParkingRecord;
 import model.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

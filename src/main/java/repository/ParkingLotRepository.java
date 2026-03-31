@@ -1,4 +1,4 @@
-package Repository;
+package repository;
 
 import model.ParkingLot;
 import org.springframework.data.jpa.repository.JpaRepository;
