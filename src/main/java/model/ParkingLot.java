@@ -14,7 +14,9 @@ public class ParkingLot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long lotId;
+    private Long id;
+
+    private String lotId;
 
     @Column(nullable = false)
     private String location;
@@ -23,7 +25,7 @@ public class ParkingLot {
     private Integer capacity;
 
     private Integer occupiedSpaces;
-    
+
     @Column(nullable = false)
     private BigDecimal costPerMinute;
 }
