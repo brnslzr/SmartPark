@@ -12,7 +12,6 @@ public class ParkingRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     private Vehicle vehicle;
     @ManyToOne
