@@ -39,7 +39,7 @@ Response Body
 "occupiedSpaces": 0
 }
 
-End point - GET /LOT-1/status
+End point - GET /{lotId}/status
 Response Body
 {
 "capacity": 100,
@@ -47,6 +47,59 @@ Response Body
 "available": 100
 }
 
-End point - GET /LOT-1/is-full
+End point - GET /{lotId}/is-full
 Response Body
 false
+
+------------------------------------------------------------------------------
+2. VehicleController
+End point - /api/vehicles
+
+Request Body
+{
+  "licensePlate": "ABC-123",
+  "type": "CAR",
+  "ownerName": "Juan Dela Cruz"
+}
+
+Response Body
+{
+  "licensePlate": "ABC-123",
+  "type": "CAR",
+  "ownerName": "Juan Dela Cruz"
+}
+
+End point -  /api/vehicles/{licensePlate}
+Response Body
+{
+    "licensePlate": "ABC-123",
+    "ownerName": "Juan Dela Cruz",
+    "type": "CAR"
+}
+
+End point - vehicles/exists/{licensePlate}
+Response
+True
+------------------------------------------------------------------------------
+3. ParkingRecordController
+End point - /parking-records/check-in?licensePlate={licensePlate}&lotId={lotId}
+{
+    "entryTime": "2026-04-01T18:31:07.8901266",
+    "exitTime": null,
+    "licensePlate": "ABC-123",
+    "lotId": "LOT-1",
+    "status": "PARKED"
+}
+
+End point - /parking-records/active/{lotId}
+Response
+[
+  {
+    "licensePlate": "ABC-123",
+    "lotId": "LOT-1",
+    "entryTime": "...",
+    "exitTime": null,
+    "status": "PARKED"
+  }
+]
+

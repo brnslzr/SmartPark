@@ -3,6 +3,7 @@ package com.SmartPark.smartpark_api.model;
 import com.SmartPark.smartpark_api.util.VehicleType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.validation.constraints.Pattern;
@@ -25,7 +26,14 @@ public class Vehicle {
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9-]+$", message = "License plate must contain only letters, numbers, and dashes")
     private String licensePlate;
-
+    public Vehicle(String licensePlate, VehicleType vehicleType, String ownerName) {
+        this.licensePlate = licensePlate;
+        this.vehicleType = vehicleType;
+        this.ownerName = ownerName;
+    }
+    // No Args REQUIRED by Hibernate
+    public Vehicle() {
+    }
     public Long getId() {
         return id;
     }
