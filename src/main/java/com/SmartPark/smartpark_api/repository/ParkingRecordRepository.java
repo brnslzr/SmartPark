@@ -1,11 +1,11 @@
-package repository;
+package com.SmartPark.smartpark_api.repository;
 
-import model.ParkingLot;
-import model.ParkingRecord;
-import model.Vehicle;
+import com.SmartPark.smartpark_api.model.ParkingLot;
+import com.SmartPark.smartpark_api.model.ParkingRecord;
+import com.SmartPark.smartpark_api.model.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import util.Status;
+import com.SmartPark.smartpark_api.util.Status;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,5 +17,5 @@ public interface ParkingRecordRepository extends JpaRepository<ParkingRecord, Lo
 
     List<ParkingRecord> findByParkingLotAndStatus(ParkingLot parkingLot, Status status);
 
-    List<ParkingRecord> findByStatusAndCheckInTimeBefore(Status status, LocalDateTime time);
+    List<ParkingRecord> findByStatusAndEntryTimeBefore(Status status, LocalDateTime time);
 }

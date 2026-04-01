@@ -1,6 +1,6 @@
-package repository;
+package com.SmartPark.smartpark_api.repository;
 
-import model.Vehicle;
+import com.SmartPark.smartpark_api.model.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

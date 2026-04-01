@@ -1,7 +1,7 @@
-package model;
+package com.SmartPark.smartpark_api.model;
 
 import jakarta.persistence.*;
-import util.Status;
+import com.SmartPark.smartpark_api.util.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

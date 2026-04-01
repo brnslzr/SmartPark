@@ -1,11 +1,11 @@
-package model;
+package com.SmartPark.smartpark_api.model;
 
+import com.SmartPark.smartpark_api.util.VehicleType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.validation.constraints.Pattern;
-import util.VehicleType;
 
 @Entity
 @Getter

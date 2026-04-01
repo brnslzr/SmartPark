@@ -1,4 +1,4 @@
-package model;
+package com.SmartPark.smartpark_api.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
