@@ -1,11 +1,12 @@
 package com.SmartPark.smartpark_api.controller;
 
+import com.SmartPark.smartpark_api.dto.ParkingLotRequest;
+import com.SmartPark.smartpark_api.dto.ParkingLotResponse;
 import com.SmartPark.smartpark_api.model.ParkingLot;
 import com.SmartPark.smartpark_api.service.ParkingLotService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/parking-lots")
@@ -18,7 +19,18 @@ public class ParkingLotController {
     }
 
     @PostMapping
-    public ParkingLot registerParkingLot(@RequestBody ParkingLot parkingLot) {
-        return parkingLotService.registerParkingLot(parkingLot);
+    public ParkingLotResponse registerParkingLot(@RequestBody ParkingLotRequest request) {
+        return parkingLotService.registerParkingLot(request);
+    }
+
+    @GetMapping("/{lotId}/status")
+    public Map<String, Object> getParkingLotStatus(@PathVariable String lotId) {
+        return parkingLotService.getParkingLotStatus(lotId);
+    }
+
+    // ✅ 3. Check if Full
+    @GetMapping("/{lotId}/is-full")
+    public boolean isParkingLotFull(@PathVariable String lotId) {
+        return parkingLotService.isParkingLotFull(lotId);
     }
 }

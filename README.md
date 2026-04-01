@@ -18,3 +18,23 @@ Response
 {
 "token": "your-jwt-token"
 }
+
+// REMEMBER USE THE TOKEN ON TESTING ALL THE ENDPOINTS
+
+End point - POST /parking-lots
+Request Body
+{
+"lotId": "LOT-1",
+"location": "QC",
+"capacity": 100,
+"costPerMinute": 20.20
+}
+
+Response Body
+{
+"capacity": 100,
+"location": "QC",
+"lotId": "LOT-1",
+"occupiedSpaces": 0
+}
+
