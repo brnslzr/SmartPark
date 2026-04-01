@@ -28,7 +28,6 @@ public class ParkingLotController {
         return parkingLotService.getParkingLotStatus(lotId);
     }
 
-    // ✅ 3. Check if Full
     @GetMapping("/{lotId}/is-full")
     public boolean isParkingLotFull(@PathVariable String lotId) {
         return parkingLotService.isParkingLotFull(lotId);

@@ -20,6 +20,7 @@ Response
 }
 
 // REMEMBER USE THE TOKEN ON TESTING ALL THE ENDPOINTS
+1. ParkingLotController
 
 End point - POST /parking-lots
 Request Body
@@ -38,3 +39,14 @@ Response Body
 "occupiedSpaces": 0
 }
 
+End point - GET /LOT-1/status
+Response Body
+{
+"capacity": 100,
+"occupied": 0,
+"available": 100
+}
+
+End point - GET /LOT-1/is-full
+Response Body
+false
