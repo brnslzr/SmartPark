@@ -1,5 +1,39 @@
 # SmartPark
 SmartPark Test Examination
+## Overview
+SmartPark is a parking management system that allows users to register vehicles, manage parking lots, and track parking sessions.
+
+---
+
+## Tech Stack
+- Java
+- Spring Boot
+- Spring Security (JWT)
+- Spring Data JPA
+- H2 Database
+
+---
+
+## How to Run
+1. Clone the repository
+2. Open in IntelliJ
+3. Run SmartparkApiApplication
+4. Access at http://localhost:8080
+
+---
+## Features
+- Vehicle registration
+- Parking lot management
+- Check-in / Check-out
+- Cost calculation
+- Auto removal after 15 minutes
+
+---
+
+## Notes
+- Uses H2 in-memory database
+- Data resets on restart
+
 ## Authentication (JWT)
 This application uses JWT (JSON Web Token) for securing all API endpoints.
 - Authentication is implemented using Spring Security + JWT
