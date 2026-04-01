@@ -1,10 +1,10 @@
-package controller.login;
+package com.SmartPark.smartpark_api.login;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import util.JwtUtil;
+import com.SmartPark.smartpark_api.util.JwtUtil;
 
 import java.util.HashMap;
 import java.util.Map;

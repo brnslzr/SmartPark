@@ -1,12 +1,14 @@
-package config;
+package com.SmartPark.smartpark_api.config;
 
+import com.SmartPark.smartpark_api.security.JwtFilter;
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import security.JwtFilter;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
@@ -24,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
                         .anyRequest().authenticated()
-                );
+                ).httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }
