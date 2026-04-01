@@ -3,9 +3,12 @@ package com.SmartPark.smartpark_api.security;
 import com.SmartPark.smartpark_api.util.JwtUtil;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -17,18 +20,19 @@ public class JwtFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-    String path = request.getRequestURI();
+        String path = request.getRequestURI();
 
-    if (path.startsWith("/auth/login")) {
-        filterChain.doFilter(request, response);
-        return;
-    }
-    String authHeader = request.getHeader("Authorization");
+        if (path.startsWith("/auth/login")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        String authHeader = request.getHeader("Authorization");
 
-    // Check if header exists and starts with Bearer
-    if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        // Check if header exists and starts with Bearer
+        String token;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
 
-            String token = authHeader.substring(7); // remove "Bearer "
+            token = authHeader.substring(7);
 
             // Validate token
             if (!jwtUtil.validateToken(token)) {
@@ -36,10 +40,19 @@ public class JwtFilter extends OncePerRequestFilter {
                 return;
             }
         } else {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                return;
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
         }
-        // Continue request if valid
+        String username = jwtUtil.extractUsername(token);
+
+        UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                        username,
+                        null,
+                        new ArrayList<>()
+                );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
         filterChain.doFilter(request, response);
     }
 }

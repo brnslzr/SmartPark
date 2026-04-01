@@ -26,7 +26,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
                         .anyRequest().authenticated()
-                ).httpBasic(httpBasic -> httpBasic.disable());
+                ).httpBasic(httpBasic -> httpBasic.disable())
+                .addFilterBefore(jwtFilter(),
+                        org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);;
 
         return http.build();
     }
