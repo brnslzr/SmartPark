@@ -82,7 +82,7 @@ Response
 True
 ------------------------------------------------------------------------------
 3. ParkingRecordController
-End point - /parking-records/check-in?licensePlate={licensePlate}&lotId={lotId}
+End point - /parking-records/check-in
 {
     "entryTime": "2026-04-01T18:31:07.8901266",
     "exitTime": null,
@@ -102,4 +102,14 @@ Response
     "status": "PARKED"
   }
 ]
+End point - /parking-records/check-out?licensePlate={licensePlate}
 
+{
+  "licensePlate": "ABC-123",
+  "lotId": "LOT-1",
+  "entryTime": "...",
+  "exitTime": "2026-04-01T13:45:00",
+  "status": "COMPLETED"
+}
+
+End point - /parking-records/expired

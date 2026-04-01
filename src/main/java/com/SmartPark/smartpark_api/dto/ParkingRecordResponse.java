@@ -8,6 +8,15 @@ public class ParkingRecordResponse {
     private LocalDateTime entryTime;
     private LocalDateTime exitTime;
     private String status;
+    private Double totalCost;
+
+    public Double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(Double totalCost) {
+        this.totalCost = totalCost;
+    }
     public String getLicensePlate() {
         return licensePlate;
     }

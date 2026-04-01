@@ -11,6 +11,8 @@ import com.SmartPark.smartpark_api.service.ParkingRecordService;
 import org.springframework.stereotype.Service;
 import com.SmartPark.smartpark_api.util.Status;
 
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -87,6 +89,18 @@ public class ParkingRecordServiceImpl implements ParkingRecordService {
         record.setStatus(Status.COMPLETED);
 
         ParkingLot lot = record.getParkingLot();
+
+        // 🔥 CALCULATE COST
+        long minutes = Duration.between(
+                record.getEntryTime(),
+                record.getExitTime()
+        ).toMinutes();
+
+        BigDecimal totalCost = BigDecimal.valueOf(minutes)
+                .multiply(lot.getCostPerMinute());
+        record.setTotalCost(totalCost);
+
+        // update occupied spaces
         lot.setOccupiedSpaces(lot.getOccupiedSpaces() - 1);
 
         parkingLotRepository.save(lot);
